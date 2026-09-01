@@ -2,7 +2,7 @@ name: MySQL CRUD Ops Test
 
 on:
   push:
-    branches: 
+    branches:
       - main
 
 jobs:
@@ -14,44 +14,41 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: testdb
+          MySQL_DATABASE: testdb
         ports:
           - 3306:3306
         options: >-
           --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
           --health-interval=5s
           --health-timeout=5s
-          --health-retries=20  
-
+          --health-retries=20
+    
     env:
       DB_HOST: 127.0.0.1
       DB_PORT: 3306
       DB_USER: root
-      DB_PWD: root
+      DB_PASSWORD: root
       DB_NAME: testdb
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: 24
           cache: npm
-
       - name: Install deps
         run: npm ci
-
-      - name: setup DB
+      - name: Setup DB
         run: |
           mysql -h 127.0.0.1 -uroot -proot -e "CREATE DATABASE IF NOT EXISTS testdb"
-          mysql -h 127.0.0.1 -proot testdb <<'EOF'
-          CREATE TABLE products ('
-          id INT AUTO_INCREMENT PRIMARY KEY,
-          name VARCHAR(255) NOT NULL,
-          price DECIMAL(10, 2) NOT NULL
+          mysql -h 127.0.0.1 -uroot -proot testdb <<'EOF'
+          CREATE TABLE products (
+            id int auto_increment primary key,
+            name varchar(255) not null,
+            price decimal(10,2) not null
           );
           EOF
-      - name: Run tests against db
-        run: npm test    
+      - name: Run tests agaist db
+        run: npm test
