@@ -46,7 +46,7 @@ jobs:
       - name: setup DB
         run: |
           mysql -h 127.0.0.1 -uroot -proot -e "CREATE DATABASE IF NOT EXISTS testdb"
-          mysql -h 127.0.01 -proot testdb <<'EOF'
+          mysql -h 127.0.0.1 -proot testdb <<'EOF'
           CREATE TABLE products ('
           id INT AUTO_INCREMENT PRIMARY KEY,
           name VARCHAR(255) NOT NULL,
