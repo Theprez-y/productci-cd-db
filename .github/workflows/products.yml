@@ -57,5 +57,5 @@ jobs:
           ('Beans', 4000),
           ('Yam', 3000);
           EOF
-      -name: Run tests against db
+      - name: Run tests against db
         run: npm test    
