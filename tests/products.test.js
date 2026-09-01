@@ -1,9 +1,9 @@
-import { test, before, after } from "node:test";
-import assert from "node:assert/strict";
-import request from "supertest";
+const { test, before, after } = require ("node:test");
+const assert = require ("node:assert/strict");
+const request = require ("supertest");
 
-import app from "../src/app.js";
-import { pool } from "../db/db.js";
+const app = require ("../src/app.js");
+const pool = require ("../db/db.js");
 
 before(async () => {
   await pool.query("DELETE FROM products");

@@ -11,5 +11,12 @@
   },
   "scripts": {
     "test": "node test"
+  },
+  "devDependencies": {
+    "supertest": "^7.2.2"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mysql2": "^3.24.2"
   }
 }
