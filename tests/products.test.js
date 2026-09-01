@@ -2,8 +2,8 @@ const { test, before, after } = require ("node:test");
 const assert = require ("node:assert/strict");
 const request = require ("supertest");
 
-const app = require ("../src/app.js");
-const pool = require ("../db/db.js");
+const app = require ("../src/app");
+const pool = require ("../db/db");
 
 before(async () => {
   await pool.query("DELETE FROM products");
