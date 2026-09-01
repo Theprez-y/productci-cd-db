@@ -1,0 +1,15 @@
+{
+  "name": "cicd-db",
+  "version": "1.0.0",
+  "description": "ci/cd app",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node test"
+  }
+}
